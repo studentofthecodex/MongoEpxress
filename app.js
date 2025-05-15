@@ -3,6 +3,7 @@ const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
 const cors=require('cors')
 const itemRoutes=require('./routes/productoRoutes')
+const clienteRoutes=require('./routes/clienteRoutes')
 const app=express();
  const PORT=3000;
 
@@ -14,7 +15,7 @@ const app=express();
 
  //Conexion
 
-   mongoose.connect('mongodb://localhost:27017/Tienda2',{ 
+   mongoose.connect('mongodb://localhost:27017/miapp',{ 
        useNewUrlParser:true,
        useUnifiedTopology:true,
 })
@@ -24,7 +25,8 @@ const app=express();
 
 //rutas 
 
-app.use('api/items',itemRoutes);
+app.use('/api/items', itemRoutes);
+app.use('/api/cliente', clienteRoutes)
 
 app.listen(PORT, () => {
     console.log(`Servidor conectado en http://localhost:${PORT}`);
